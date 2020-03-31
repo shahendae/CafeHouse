@@ -1,0 +1,30 @@
+<div class="tm-main-section light-gray-bg">
+    <div class="container" id="main">
+        <section class="tm-section row">
+            <div class="col-lg-12 tm-section-header-container margin-bottom-30">
+                <h2 class="tm-section-header gold-text tm-handwriting-font"><img src="img/logo.png" alt="Logo"
+                        class="tm-site-logo"> Add Category </h2>
+                <div class="tm-hr-container">
+                    <hr class="tm-hr">
+                </div>
+            </div>
+            <form #f="ngForm" (ngSubmit)="Save()" class="tm-contact-form">
+                <div class="col-lg-7 col-md-7">
+                    <div class="form-group">
+                        <label for="categoryName">Category Name</label>
+                        <input type="text" id="categoryName" [(ngModel)]="category.categoryName" name="categoryName"
+                            class="form-control" placeholder="Category NAME" required #categoryName="ngModel" />
+                        <div class="alert alert-danger" *ngIf="categoryName.touched && categoryName.invalid">Category
+                            Name
+                            is required</div>
+                    </div>
+                    <br>
+                    <!-- <p>{{f.value | json}}</p> -->
+                    <div class="form-group">
+                        <button class="tm-more-button" type="submit" name="submit">Add</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>

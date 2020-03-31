@@ -1,0 +1,50 @@
+<div class="tm-main-section light-gray-bg">
+    <div class="container" id="main">
+        <section class="tm-section row">
+            <div class="col-lg-6">
+                <h2 class="tm-section-header gold-text tm-handwriting-font">Add New Product</h2>
+                <a routerLink="/product/add" class="tm-more-button margin-top-30">New Product</a>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="tm-section-header gold-text tm-handwriting-font">Add New Category</h2>
+                <a routerLink="/category/add" class="tm-more-button margin-top-30">New Category</a>
+            </div>
+        </section>
+        <section class="tm-section row">
+            <div class="col-lg-12 tm-section-header-container margin-bottom-30">
+                <h2 class="tm-section-header gold-text tm-handwriting-font"><img src="img/logo.png" alt="Logo"
+                        class="tm-site-logo"> All Products </h2>
+                <div class="tm-hr-container">
+                    <hr class="tm-hr">
+                </div>
+            </div>
+            <div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <td>Product</td>
+                            <td>Price</td>
+                            <td>Quantity</td>
+                            <td>Status</td>
+                            <td>Action</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of products">
+                            <td>{{item.productName}}</td>
+                            <td>{{item.price}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.status}}</td>
+                            <td>
+                                <a [routerLink]="['/product/edit', item.id]" class="btn btn-primary">Edit</a> &nbsp;
+                                <button type="button" class="btn btn-danger" (click)="delete(item.id)">Delete</button>
+                                &nbsp;
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

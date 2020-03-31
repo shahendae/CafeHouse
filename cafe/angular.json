@@ -21,12 +21,17 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/img"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/font-awesome/css/font-awesome.min.css" 
             ],
-            "scripts": []
+            "scripts": [ 
+              "src/assets/plugins/jquery-1.11.2.min.js",
+              "src/assets/plugins/templatemo-script.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -88,9 +93,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/img"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           }
         },
         "lint": {
