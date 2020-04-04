@@ -37,7 +37,8 @@
                             <td>{{item.status}}</td>
                             <td>
                                 <a [routerLink]="['/product/edit', item.id]" class="btn btn-primary">Edit</a> &nbsp;
-                                <button type="button" class="btn btn-danger" (click)="delete(item.id)">Delete</button>
+                                <!-- <button type="button" class="btn btn-danger" (click)="delete(item.id)">Delete</button> -->
+                                <a [routerLink]="['/product/delete', item.id]" class="btn btn-danger">Delete</a>
                                 &nbsp;
                             </td>
                         </tr>

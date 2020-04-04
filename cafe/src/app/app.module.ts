@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { ProductService } from './_service/product.service';
@@ -23,6 +23,11 @@ import { MyOrdersComponent } from './User/my-orders/my-orders.component';
 import { LoginComponent } from './MainPage/login/login.component';
 import { FooterComponent } from './MainPage/footer/footer.component';
 import { NavBarComponent } from './MainPage/nav-bar/nav-bar.component';
+import { AuthGuard } from './_guard/auth.guard';
+import { AdminAuthGuard } from './_guard/admin-auth.guard';
+import { UserAuthGuard } from './_guard/user-auth.guard';
+import { AuthInterceptor } from './_guard/auth-interceptor';
+import { DeleteUserComponent } from './Admin/user/delete-user/delete-user.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +45,8 @@ import { NavBarComponent } from './MainPage/nav-bar/nav-bar.component';
     MyOrdersComponent,
     LoginComponent,
     FooterComponent,
-    NavBarComponent
+    NavBarComponent,
+    DeleteUserComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +58,15 @@ import { NavBarComponent } from './MainPage/nav-bar/nav-bar.component';
     ProductService,
     OrderService,
     CategoryService,
-    UserService
+    UserService,
+    AuthGuard,
+    AdminAuthGuard,
+    UserAuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true 
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -13,14 +13,7 @@ export class ListProductComponent implements OnInit {
 
   constructor(private s: ProductService, private router: Router) {
    }
-
-   delete(id) {
-     console.log("deleted id", id);
-     this.s.deleteProduct(id).subscribe(a => {
-       this.router.navigate(['/product']);
-     });
-   }
-
+   
   ngOnInit(): void {
     this.s.getProducts().subscribe(a => {
       this.products = a;

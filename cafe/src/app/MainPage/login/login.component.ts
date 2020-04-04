@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/_models/user';
 import { UserService } from 'src/app/_service/user.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -9,15 +10,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user: User = new User();
 
-  constructor(private userService: UserService, private router: Router) { }
+  notLogin: boolean = false;
+  constructor(private userService: UserService, private router: Router,
+    private route: ActivatedRoute) { }
 
   Save(userName, password){
-    console.log('user name ', userName);
-    console.log('password', password);
-    this.userService.userAuthentication(userName, password).subscribe(a => {
-      console.log('tessssst login ', a);
+    this.userService.userAuthentication(userName, password).subscribe((data:any) => {
+      console.log('Login Data ', data);
+      localStorage.setItem('userToken', data.access_token);
+      localStorage.setItem('userId', data.id);
+      localStorage.setItem('userName', data.userName);
+
+      let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+      this.router.navigate([returnUrl || '/'])
+    },
+    (err: HttpErrorResponse) => {
+      this.notLogin = true;
     });
   }
 
