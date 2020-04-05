@@ -12,6 +12,11 @@ export class NavBarComponent implements OnInit {
   constructor(public userService: UserService) {
    }
 
+   isAdmin(){
+     if(this.userService.CurrentUserRole() == "Admin") return true;
+     return false;
+   }
+
   ngOnInit(): void {
   }
 

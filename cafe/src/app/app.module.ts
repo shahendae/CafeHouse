@@ -18,7 +18,6 @@ import { AddOrdersComponent } from './Admin/order/add-orders/add-orders.componen
 import { ListUsersComponent } from './Admin/user/list-users/list-users.component';
 import { AddUserComponent } from './Admin/user/add-user/add-user.component';
 import { EditUserComponent } from './Admin/user/edit-user/edit-user.component';
-import { HomeComponent } from './Admin/home/home.component';
 import { MyOrdersComponent } from './User/my-orders/my-orders.component';
 import { LoginComponent } from './MainPage/login/login.component';
 import { FooterComponent } from './MainPage/footer/footer.component';
@@ -28,6 +27,9 @@ import { AdminAuthGuard } from './_guard/admin-auth.guard';
 import { UserAuthGuard } from './_guard/user-auth.guard';
 import { AuthInterceptor } from './_guard/auth-interceptor';
 import { DeleteUserComponent } from './Admin/user/delete-user/delete-user.component';
+import { HomeUserComponent } from './User/home-user/home-user.component';
+import { HomeAdminComponent } from './Admin/home-admin/home-admin.component';
+import { HomeComponent } from './MainPage/home/home.component';
 
 @NgModule({
   declarations: [
@@ -41,12 +43,14 @@ import { DeleteUserComponent } from './Admin/user/delete-user/delete-user.compon
     ListUsersComponent,
     AddUserComponent,
     EditUserComponent,
-    HomeComponent,
     MyOrdersComponent,
     LoginComponent,
     FooterComponent,
     NavBarComponent,
-    DeleteUserComponent
+    DeleteUserComponent,
+    HomeUserComponent,
+    HomeAdminComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

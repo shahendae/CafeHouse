@@ -12,24 +12,29 @@ import { EditUserComponent } from './Admin/user/edit-user/edit-user.component';
 import { AuthGuard } from './_guard/auth.guard';
 import { DeleteProductComponent } from './Admin/product/delete-product/delete-product.component';
 import { DeleteUserComponent } from './Admin/user/delete-user/delete-user.component';
+import { AdminAuthGuard } from './_guard/admin-auth.guard';
+import { HomeAdminComponent } from './Admin/home-admin/home-admin.component';
+import { HomeUserComponent } from './User/home-user/home-user.component';
+import { UserAuthGuard } from './_guard/user-auth.guard';
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-
-  {path:'product', component: ListProductComponent, canActivate: [AuthGuard]},
-  {path: 'product/add', component: AddProductComponent, canActivate: [AuthGuard]},
-  {path: 'product/edit/:id', component: AddProductComponent, canActivate: [AuthGuard]},
-  {path: 'product/delete/:id', component: DeleteProductComponent, canActivate: [AuthGuard]},
-
-  {path: 'category', component: ListCategoryComponent, canActivate: [AuthGuard]},
-  {path: 'category/add', component: AddCategoryComponent, canActivate: [AuthGuard]},
-
-  {path: 'adminUser', component: ListUsersComponent, canActivate: [AuthGuard]},
-  {path: 'adminUser/add', component: AddUserComponent, canActivate: [AuthGuard]},
-  {path: 'adminUser/edit/:id', component: EditUserComponent, canActivate: [AuthGuard]},
-  {path: 'adminUser/delete/:id', component: DeleteUserComponent, canActivate: [AuthGuard]}
+  //Admin
+  {path:'product', component: ListProductComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+  {path: 'product/add', component: AddProductComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+  {path: 'product/edit/:id', component: AddProductComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+  {path: 'product/delete/:id', component: DeleteProductComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+  {path: 'category', component: ListCategoryComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+  {path: 'category/add', component: AddCategoryComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+  {path: 'adminUser', component: ListUsersComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+  {path: 'adminUser/add', component: AddUserComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+  {path: 'adminUser/edit/:id', component: EditUserComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+  {path: 'adminUser/delete/:id', component: DeleteUserComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+  {path: 'admin/home', component: HomeAdminComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+  //user
+  {path: 'user/home', component: HomeUserComponent, canActivate: [AuthGuard, UserAuthGuard]}
 ];
 
 @NgModule({

@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('userToken', data.access_token);
       localStorage.setItem('userId', data.id);
       localStorage.setItem('userName', data.userName);
+      localStorage.setItem('userRole', data.Role);
 
       let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
       this.router.navigate([returnUrl || '/'])

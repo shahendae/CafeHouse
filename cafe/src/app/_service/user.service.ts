@@ -70,6 +70,13 @@ export class UserService {
     return localStorage.getItem('userToken');
   }
 
+  CurrentUserRole(){
+    let userToken = localStorage.getItem('userToken');
+    if(!userToken) return null;
+    let userRole = localStorage.getItem('userRole');
+    return userRole;
+  }
+
 
 
 }
