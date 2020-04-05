@@ -9,6 +9,8 @@ import { ListCategoryComponent } from './Admin/Category/list-category/list-categ
 import { ListUsersComponent } from './Admin/user/list-users/list-users.component';
 import { AddUserComponent } from './Admin/user/add-user/add-user.component';
 import { EditUserComponent } from './Admin/user/edit-user/edit-user.component';
+import { MyOrdersComponent } from './User/my-orders/my-orders.component';
+import { PageNotFoundComponent } from './MainPage/page-not-found/page-not-found.component';
 import { AuthGuard } from './_guard/auth.guard';
 import { DeleteProductComponent } from './Admin/product/delete-product/delete-product.component';
 import { DeleteUserComponent } from './Admin/user/delete-user/delete-user.component';
@@ -34,7 +36,10 @@ const routes: Routes = [
   {path: 'adminUser/delete/:id', component: DeleteUserComponent, canActivate: [AuthGuard, AdminAuthGuard]},
   {path: 'admin/home', component: HomeAdminComponent, canActivate: [AuthGuard, AdminAuthGuard]},
   //user
-  {path: 'user/home', component: HomeUserComponent, canActivate: [AuthGuard, UserAuthGuard]}
+  {path: 'user/home', component: HomeUserComponent, canActivate: [AuthGuard, UserAuthGuard]},
+  {path:"user/myorders",component:MyOrdersComponent},
+  {path:"",redirectTo:"user/home",pathMatch:"full"},
+  {path:"**",component:PageNotFoundComponent},
 ];
 
 @NgModule({

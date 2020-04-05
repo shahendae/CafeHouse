@@ -7,6 +7,8 @@ import { Order } from '../_models/order';
 })
 export class OrderService {
   url = 'http://localhost:56311/api/orders';
+  urlOrder = 'http://localhost:56311/api/orders/';
+  userId:string = "97910cd0-2bf8-43e0-87b3-96a54381983c";
   constructor(private http: HttpClient) { 
   }
 
@@ -17,4 +19,9 @@ export class OrderService {
   addOrder(order: Order){
     return this.http.post(this.url,order);
   }
+
+  getUserOrders(){
+    return this.http.get<Order[]>(this.urlOrder+this.userId);
+  }
+
 }
