@@ -12,12 +12,12 @@ export class ListUsersComponent implements OnInit {
   users: User[] = [];
   constructor(private u: UserService, private router: Router) { }
 
-  delete(id){
-    this.u.deleteUser(id).subscribe(a => {
-      console.log('Deleted user ', a);
-      this.router.navigate(['/adminUser']);
-    });
-  }
+  // delete(id){
+  //   this.u.deleteUser(id).subscribe(a => {
+  //     console.log('Deleted user ', a);
+  //     this.router.navigate(['/adminUser']);
+  //   });
+  // }
 
   ngOnInit(): void {
     this.u.getUsers().subscribe(u=>{

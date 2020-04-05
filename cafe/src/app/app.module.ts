@@ -2,12 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
-import {HttpClientModule} from '@angular/common/http';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 
 
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { ProductService } from './_service/product.service';
@@ -30,6 +30,11 @@ import { FooterComponent } from './MainPage/footer/footer.component';
 import { NavBarComponent } from './MainPage/nav-bar/nav-bar.component';
 import { PageNotFoundComponent } from './MainPage/page-not-found/page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthGuard } from './_guard/auth.guard';
+import { AdminAuthGuard } from './_guard/admin-auth.guard';
+import { UserAuthGuard } from './_guard/user-auth.guard';
+import { AuthInterceptor } from './_guard/auth-interceptor';
+import { DeleteUserComponent } from './Admin/user/delete-user/delete-user.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +53,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     FooterComponent,
     NavBarComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    DeleteUserComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +71,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProductService,
     OrderService,
     CategoryService,
-    UserService
+    UserService,
+    AuthGuard,
+    AdminAuthGuard,
+    UserAuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true 
+    }
   ],
   bootstrap: [AppComponent]
 })
