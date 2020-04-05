@@ -13,9 +13,20 @@
                 <nav class="tm-nav">
                     <ul>
                         <li><a routerLink="/" class="active">Home</a></li>
-                        <li><a routerLink = "/login">Login</a></li>
-                        <li><a routerLink = "/product">Products</a></li>
-                        <li><a routerLink = "/adminUser">Users</a></li>
+                        <li *ngIf="!userService.IsLogin()"><a routerLink="/login">Login</a></li>
+                        <!-- container for Admin Navbar -->
+                        <ng-container *ngIf="userService.IsLogin() && isAdmin()">
+                            <li><a routerLink="/product">Products</a></li>
+                            <li><a routerLink="/adminUser">Users</a></li>
+                        </ng-container>
+                        <!-- container for user Navbar -->
+                        <ng-container *ngIf="userService.IsLogin() && !isAdmin()">
+                            <li><a routerLink="/user/home">Profile</a></li>
+                            <li><a routerLink="/user/myorders">My Orders</a></li>
+                        </ng-container>
+                        <li *ngIf="userService.IsLogin()"><a (click)="userService.Logout()">Logout</a></li>
+                        <li *ngIf="userService.IsLogin()"><a>WELCOME {{userService.CurrentUserName()}}</a></li>
+
                     </ul>
                 </nav>
 
