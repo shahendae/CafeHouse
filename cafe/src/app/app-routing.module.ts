@@ -21,7 +21,8 @@ import { UserAuthGuard } from './_guard/user-auth.guard';
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', redirectTo:"/home", pathMatch:"full"},
+  {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   //Admin
   {path:'product', component: ListProductComponent, canActivate: [AuthGuard, AdminAuthGuard]},
@@ -37,8 +38,8 @@ const routes: Routes = [
   {path: 'admin/home', component: HomeAdminComponent, canActivate: [AuthGuard, AdminAuthGuard]},
   //user
   {path: 'user/home', component: HomeUserComponent, canActivate: [AuthGuard, UserAuthGuard]},
-  {path:"user/myorders",component:MyOrdersComponent},
-  {path:"",redirectTo:"user/home",pathMatch:"full"},
+  {path:"user/myorders",component:MyOrdersComponent, canActivate: [AuthGuard, UserAuthGuard]},
+  // {path:"",redirectTo:"user/home",pathMatch:"full", canActivate: [AuthGuard, UserAuthGuard]},
   {path:"**",component:PageNotFoundComponent},
 ];
 
