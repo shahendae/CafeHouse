@@ -9,11 +9,14 @@ import { ListCategoryComponent } from './Admin/Category/list-category/list-categ
 import { ListUsersComponent } from './Admin/user/list-users/list-users.component';
 import { AddUserComponent } from './Admin/user/add-user/add-user.component';
 import { EditUserComponent } from './Admin/user/edit-user/edit-user.component';
+import { MyOrdersComponent } from './User/my-orders/my-orders.component';
+import { PageNotFoundComponent } from './MainPage/page-not-found/page-not-found.component';
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
+  // we need guard for admin in this area
   {path:'product', component: ListProductComponent},
   {path: 'product/add', component: AddProductComponent},
   {path: 'product/edit/:id', component: AddProductComponent},
@@ -21,8 +24,12 @@ const routes: Routes = [
   {path: 'category/add', component: AddCategoryComponent},
   {path: 'adminUser', component: ListUsersComponent},
   {path: 'adminUser/add', component: AddUserComponent},
-  {path: 'adminUser/edit/:id', component: EditUserComponent}
-
+  {path: 'adminUser/edit/:id', component: EditUserComponent},
+  // we need guard for user in this area
+  {path:"user/myorders",component:MyOrdersComponent},
+  {path:"",redirectTo:"user/home",pathMatch:"full"},
+  // without guard with main page components
+  {path:"**",component:PageNotFoundComponent},
 ];
 
 @NgModule({
