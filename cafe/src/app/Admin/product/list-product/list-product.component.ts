@@ -15,9 +15,9 @@ export class ListProductComponent implements OnInit {
    }
 
    delete(id) {
-     console.log("deleted id", id);
      this.s.deleteProduct(id).subscribe(a => {
-       this.router.navigate(['/product']);
+        console.log("deleted id", id);
+        this.router.navigate(['/product']);
      });
    }
 

@@ -32,11 +32,15 @@ export class AddProductComponent implements OnInit {
 
   Save(){
     //Edit product
-    if(this.id) this.s.editProduct(this.id, this.product).subscribe(a => console.log(a));
+    if(this.id) this.s.editProduct(this.id, this.product).subscribe(a => {
+      console.log(a)
+      this.router.navigate(['/product'])
+    });
     //Add new product
-    else this.s.addProduct(this.product).subscribe(a => console.log(a));
-    //Go to list product
-    this.router.navigate(['/product']);
+    else this.s.addProduct(this.product).subscribe(a => {
+      console.log(a)
+      this.router.navigate(['/product'])
+    });
   }
 
   //Get categories from database for dropdownlist
