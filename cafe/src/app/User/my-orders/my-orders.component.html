@@ -1,4 +1,5 @@
-<div class="container p-2">
+
+<div class="container p-4">
     <h1 class="gold-text">My Orders</h1>
             <!-- <mat-form-field>
                 <mat-label>Date From</mat-label>
@@ -7,23 +8,20 @@
                 <mat-datepicker #picker  ngDefaultControl (_validSelected)="GetData($event)" ></mat-datepicker>
             </mat-form-field><button (click)="GetData(picker)">Hello</button> -->
 
-
-
-
-
 <div class="tm-main-section light-gray-bg">
     <div class="container" id="main">
         <section class="tm-section row">
             <div class="col-lg-6">
-                <form #From="ngForm">
+                <form #From="ngForm" (ngSubmit)="GetData(From)">
                     <label for="from">From date</label>
-                    <input type="date" name="fromDate" [(ngModel)]="fromDate">
+                    <input type="date" name="fromDate" ngModel  #fromDate="ngModel">
                 
                     <label for="to">To Date</label>
-                    <input type="date" name="toDate" [(ngModel)]="toDate">
+                    <input type="date" name="toDate" ngModel #toDate="ngModel">
+                    <button>show</button>
                 </form>
                 
-                      <button (click)="GetData(From)">show</button>
+                      
             </div>
         </section>
         <section class="tm-section row">
@@ -37,7 +35,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of myOrders"> 
+                        <tr *ngFor="let item of myOrders" (click)="Show(item.id)"> 
             
                             <td>{{item.date}}</td>
                             <td>{{item.action}}</td>
