@@ -12,10 +12,11 @@
 
                 <nav class="tm-nav">
                     <ul>
-                        <li><a routerLink="/" class="active">Home</a></li>
+                        <li *ngIf="!userService.IsLogin()"><a routerLink="/" class="active">Home</a></li>
                         <li *ngIf="!userService.IsLogin()"><a routerLink="/login">Login</a></li>
                         <!-- container for Admin Navbar -->
                         <ng-container *ngIf="userService.IsLogin() && isAdmin()">
+                            <li><a routerLink="/admin/home" class="active">Home</a></li>
                             <li><a routerLink="/product">Products</a></li>
                             <li><a routerLink="/adminUser">Users</a></li>
                         </ng-container>
