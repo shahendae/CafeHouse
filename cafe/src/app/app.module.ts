@@ -55,7 +55,8 @@ import { HomeComponent } from './MainPage/home/home.component';
     DeleteUserComponent,
     HomeUserComponent,
     HomeAdminComponent,
-    HomeComponent
+    HomeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +67,6 @@ import { HomeComponent } from './MainPage/home/home.component';
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
-    
   ],
   providers: [
     ProductService,
