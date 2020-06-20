@@ -1,0 +1,3 @@
+[submodule "AngularServer"]
+	path = AngularServer
+	url = https://github.com/shahendae/AngularServer.git

@@ -1,50 +1,49 @@
-
-<div class="container p-4">
-    <h1 class="gold-text">My Orders</h1>
-            <!-- <mat-form-field>
-                <mat-label>Date From</mat-label>
-                <input (ngModelChange)="GetData(picker)" matInput [matDatepicker]="picker" placeholder="Choose a date">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker  ngDefaultControl (_validSelected)="GetData($event)" ></mat-datepicker>
-            </mat-form-field><button (click)="GetData(picker)">Hello</button> -->
-
 <div class="tm-main-section light-gray-bg">
     <div class="container" id="main">
-        <section class="tm-section row">
-            <div class="col-lg-6">
-                <form #From="ngForm" (ngSubmit)="GetData(From)">
-                    <label for="from">From date</label>
-                    <input type="date" name="fromDate" ngModel  #fromDate="ngModel">
-                
-                    <label for="to">To Date</label>
-                    <input type="date" name="toDate" ngModel #toDate="ngModel">
-                    <button>show</button>
-                </form>
-                
-                      
-            </div>
-        </section>
-        <section class="tm-section row">
-            <div>
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Order Date</th>
-                            <th>Action</th>
-                            <th>Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let item of myOrders" (click)="Show(item.id)"> 
-            
-                            <td>{{item.date}}</td>
-                            <td>{{item.action}}</td>
-                            <td>{{item.totalAmount}}</td>
-                        </tr>
-                    </tbody>
+        <div class="container p-4">
+            <h1 class="gold-text">My Orders</h1>
+            <br />
+            <!-- <mat-form-field>
+                        <mat-label>Date From</mat-label>
+                        <input (ngModelChange)="GetData(picker)" matInput [matDatepicker]="picker" placeholder="Choose a date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker  ngDefaultControl (_validSelected)="GetData($event)" ></mat-datepicker>
+                    </mat-form-field><button (click)="GetData(picker)">Hello</button> -->
+            <section class="tm-section row">
+                <div class="col-lg-6">
+                    <form #From="ngForm" (ngSubmit)="GetData(From)">
+                        <label for="from">From date</label>
+                        <input type="date" name="fromDate" ngModel #fromDate="ngModel">
 
-                </table>
-            </div>
-        </section>
+                        <label for="to">To Date</label>
+                        <input type="date" name="toDate" ngModel #toDate="ngModel">
+                        <button>show</button>
+                    </form>
+
+
+                </div>
+            </section>
+            <section class="tm-section row">
+                <div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Order Date</th>
+                                <th>Action</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of myOrders" (click)="Show(item.id)">
+
+                                <td>{{item.date}}</td>
+                                <td>{{item.action}}</td>
+                                <td>{{item.totalAmount}}</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </section>
+        </div>
     </div>
-</div>
